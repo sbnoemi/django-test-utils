@@ -101,8 +101,8 @@ class Command(LabelCommand):
 
         objects = []
         for model, slice in models:
-            if isinstance(slice, basestring):
                 objects.extend(model._default_manager.filter(pk__exact=slice))
+            if len(slice) and isinstance(slice, basestring):
             elif not slice or type(slice) is list:
                 items = model._default_manager.all()
                 if slice and slice[0]:
